@@ -1,5 +1,141 @@
----
-layout: front
-layout : posts
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Junk Journaling Kit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #faf9f7;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #6a9aaf;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    select, input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    .radio-group {
+      margin-top: 8px;
+    }
+    .radio-group label {
+      display: inline-block;
+      margin-right: 15px;
+      font-weight: normal;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #6a9aaf;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #537a8b;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Junk Journaling Kit</h1>
+    <p>Beautifully curated envelopes filled with found paper, pictures, and patterns for your journaling delight.</p>
+  </header>
+  <form id="orderForm">
+    <label for="kitSize">Choose your kit size:</label>
+    <select id="kitSize" name="kitSize" required>
+      <option value="">-- Select --</option>
+      <option value="small">Small Envelope Kit</option>
+      <option value="medium">Medium Envelope Kit</option>
+      <option value="large">Large Envelope Kit</option>
+    </select>
 
+    <label>Would you like a subscription?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="subscription" value="oneTime" checked /> One-time purchase</label>
+      <label><input type="radio" name="subscription" value="monthly" /> Monthly subscription (save more!)</label>
+    </div>
+
+    <label for="colorPreference">Preferred colors or color themes (optional):</label>
+    <input type="text" id="colorPreference" name="colorPreference" placeholder="e.g. blues, pastels, autumn tones" />
+
+    <label>Include people-themed papers or pictures?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="includePeople" value="yes" /> Yes</label>
+      <label><input type="radio" name="includePeople" value="no" checked /> No</label>
+    </div>
+
+    <label for="specialInterests">Any special interests or notes?</label>
+    <textarea id="specialInterests" name="specialInterests" placeholder="Tell us what you'd like included..." ></textarea>
+
+    <button type="submit">Place Order</button>
+  </form>
+
+  <div class="footer">
+    <p>Note: This form is a demo. Payment processing and order fulfillment will be handled after submission.</p>
+  </div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const kitSize = document.getElementById('kitSize').value;
+      if (!kitSize) {
+        alert('Please select a kit size.');
+        return;
+      }
+      // Gather form data
+      const subscription = document.querySelector('input[name="subscription"]:checked').value;
+      const colorPreference = document.getElementById('colorPreference').value.trim();
+      const includePeople = document.querySelector('input[name="includePeople"]:checked').value;
+      const specialInterests = document.getElementById('specialInterests').value.trim();
+
+      // Here you would normally send this data to a server or 3rd party API
+      // For demo, just summarize the order:
+      let summary = `You selected:\n\nKit Size: ${kitSize}\nPurchase Type: ${subscription === 'monthly' ? 'Monthly Subscription' : 'One-time Purchase'}`;
+      if (colorPreference) summary += `\nPreferred Colors: ${colorPreference}`;
+      summary += `\nInclude People Theme: ${includePeople === 'yes' ? 'Yes' : 'No'}`;
+      if (specialInterests) summary += `\nSpecial Interests: ${specialInterests}`;
+
+      alert(summary + '\n\nThank you for your order! We will be in touch.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
