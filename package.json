@@ -1,26 +1,13 @@
 {
-  "name": "cvatch-github-io",
+  "name": "growtye-site",
   "private": true,
-  "version": "0.0.1",
-  "author": {
-    "name": "Philip Kirkbride",
-    "url": "https://github.com/kirkins"
-  },
-  "engines": {
-    "node": ">= 0.10.0 && < 0.11.0"
-  },
+  "version": "1.0.0",
   "scripts": {
-    "test": "grunt test"
+    "start": "http-server -p $(node -e \"process.stdout.write(String(49152 + Math.floor(Math.random()*16384)))\") -c-1 .",
+    "start:fixed": "http-server -p 8080 -c-1 ."
   },
-  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-cli": "~0.1.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-gh-pages": "0.9.1",
-    "grunt-markdown": "^0.5.0"
-  },
-  "peerDependencies": {
-    "grunt": "~0.4.1"
+    "http-server": "^14.1.1"
   }
 }
+
